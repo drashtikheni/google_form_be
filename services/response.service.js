@@ -62,10 +62,10 @@ const create = async (params) => {
   return createdResponse;
 };
 
-const find = async () => {
-  const responses = Response.find();
+const formResponses = async (form) => {
+  const responses = Response.find({ form });
   return responses;
 };
 
 exports.create = create;
-exports.find = find;
+exports.formResponses = formResponses;

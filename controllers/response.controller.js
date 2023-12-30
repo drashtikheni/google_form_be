@@ -1,6 +1,9 @@
 const { validationResult } = require("express-validator");
 const { HTTP_STATUSES } = require("../constant");
-const { create } = require("../services/response.service");
+const { create, formResponses } = require("../services/response.service");
+const { isValidMongoId } = require("../services/javascript.service");
+const AppError = require("../AppError");
+const { ERROR_MESSAGES } = require("../messages");
 
 const createResponse = async (req, res, next) => {
   try {
@@ -22,7 +25,20 @@ const createResponse = async (req, res, next) => {
   }
 };
 
-const getFormResponses = async () => {};
+const getFormResponses = async (req, res, next) => {
+  try {
+    const { id: form } = req.params;
+
+    const isValid = isValidMongoId(form);
+    if (!isValid)
+      throw new AppError(ERROR_MESSAGES.invalidId, HTTP_STATUSES.BAD_REQUEST);
+
+    const responses = await formResponses(form);
+    return res.status(HTTP_STATUSES.OK).json({ responses });
+  } catch (err) {
+    next(err);
+  }
+};
 
 exports.createResponse = createResponse;
 exports.getFormResponses = getFormResponses;

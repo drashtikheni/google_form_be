@@ -2,6 +2,7 @@ const ERROR_MESSAGES = {
   SOMETHING_WENT_WRONG: "Something went wrong!",
   pathNotFound: "Path not found",
   requiredFieldMissing: "Please provide all required fields",
+  invalidId: "Invalid Id",
 };
 
 const FORM_MESSAGES = {

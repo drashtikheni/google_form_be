@@ -1,3 +1,4 @@
+const { default: mongoose } = require("mongoose");
 const { OBJECT, STRING } = require("../constant");
 
 const ternary = (bool, truthy, falsy) => (bool ? truthy : falsy);
@@ -59,6 +60,8 @@ const findInvalidAnswers = (requiredArray, answerArray) => {
   return invalidAnswers;
 };
 
+const isValidMongoId = (id) => mongoose.Types.ObjectId.isValid(id);
+
 exports.ternary = ternary;
 exports.equal = equal;
 exports.length = length;
@@ -74,3 +77,4 @@ exports.checkIncludes = checkIncludes;
 exports.findInvalidAnswers = findInvalidAnswers;
 exports.gt = gt;
 exports.size = size;
+exports.isValidMongoId = isValidMongoId;
