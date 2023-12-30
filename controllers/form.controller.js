@@ -25,7 +25,7 @@ const createForm = async (req, res) => {
 
 const getForms = async (req, res) => {
   try {
-    const forms = find();
+    const forms = await find();
     return res.status(HTTP_STATUSES.OK).json({ forms });
   } catch (err) {
     console.log(err);

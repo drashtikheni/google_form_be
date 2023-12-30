@@ -7,7 +7,7 @@ const create = async (params) => {
 };
 
 const find = async () => {
-  const forms = Form.find();
+  const forms = await Form.find();
   return forms;
 };
 
