@@ -14,7 +14,7 @@ const createForm = async (req, res) => {
 
     const form = req.body;
     const createdForm = await create(form);
-    return res.status(HTTP_STATUSES.OK).json({ form: createdForm });
+    return res.status(HTTP_STATUSES.CREATED).json({ form: createdForm });
   } catch (err) {
     console.log(err);
     return res
