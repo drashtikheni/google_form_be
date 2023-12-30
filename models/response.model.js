@@ -5,15 +5,19 @@ const responseSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "Form",
   },
-  title: {
-    type: String,
-    required: true,
-  },
-  description: {
-    type: String,
-    required: true,
-  },
-  questions: [questionsSchema],
+  responses: [
+    {
+      question: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Form.questions",
+        required: true,
+      },
+      answer: {
+        type: String,
+        required: true,
+      },
+    },
+  ],
 });
 
 module.exports = mongoose.model("Response", responseSchema);

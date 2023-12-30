@@ -7,7 +7,7 @@ const {
   ANSWER_TYPES_ENUM,
   HTTP_STATUSES,
 } = require("../constant");
-const { equal, length } = require("../services/javascript.service");
+const { equal, length, size } = require("../services/javascript.service");
 const AppError = require("../AppError");
 
 const router = express.Router();
@@ -40,7 +40,7 @@ router.post(
     body("questions.*.options")
       .custom((options) => {
         const uniqueOptions = new Set(options);
-        if (!equal(uniqueOptions.size, length(options))) {
+        if (!equal(size(uniqueOptions), length(options))) {
           throw new AppError(
             FORM_MESSAGES.uniqueOptions,
             HTTP_STATUSES.BAD_REQUEST

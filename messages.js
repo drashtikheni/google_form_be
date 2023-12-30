@@ -17,6 +17,7 @@ const FORM_MESSAGES = {
   answerRequired: "Answer is required",
   oneAnswerRequired: "At least one answer is required",
   uniqueOptions: "Each question should have unique options",
+  uniqueQuestions: "Each response must be unique",
 };
 
 exports.ERROR_MESSAGES = ERROR_MESSAGES;
